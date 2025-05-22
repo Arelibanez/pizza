@@ -13,6 +13,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     const formData = new FormData(event.currentTarget);
     const bookingData = {
       name: formData.get('name'),
+      email: formData.get('email'), // Added email
       date: formData.get('date'),
       time: formData.get('time'),
       guests: formData.get('guests'),
@@ -20,7 +21,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
     };
     // Logica di invio della prenotazione (simulata)
     console.log('Dati della prenotazione:', bookingData);
-    alert('Prenotazione confermata! Controlla la console per i dettagli. (Logica di invio reale da implementare)');
+    alert(`Prenotazione confermata per ${bookingData.name}! Una mail di conferma è stata inviata a ${bookingData.email}. (Logica di invio reale da implementare)`);
     onClose(); // Chiudi il modale dopo l'invio
   };
 
@@ -42,6 +43,10 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2">Nome e Cognome</label>
             <input type="text" id="name" name="name" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" />
           </div>
+          <div className="mb-4"> {/* Added Email Field */}
+            <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+            <input type="email" id="email" name="email" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="tuamail@esempio.com" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label htmlFor="date" className="block text-gray-700 text-sm font-semibold mb-2">Data</label>
@@ -54,7 +59,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
           </div>
           <div className="mb-4">
             <label htmlFor="guests" className="block text-gray-700 text-sm font-semibold mb-2">Numero di Persone</label>
-            <input type="number" id="guests" name="guests" min="1" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" />
+            <input type="number" id="guests" name="guests" min="1" max="20" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500" />
           </div>
           <div className="mb-6">
             <label htmlFor="notes" className="block text-gray-700 text-sm font-semibold mb-2">Note (opzionale)</label>

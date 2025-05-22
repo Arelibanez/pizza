@@ -33,15 +33,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f3f4f6; /* Tailwind gray-100 */
+  display: flex; /* ADDED */
+  flex-direction: column; /* ADDED */
+  min-height: 100vh; /* ADDED */
 }
 
 /* Clean #root styles to prevent interference with Tailwind layouts */
 #root {
-  /* Add any specific #root styles here if necessary, but generally keep it clean */
-  /* For example, if you want #root to also be a flex container for some reason: */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* min-height: 100vh; */
+  display: flex; /* ADDED */
+  flex-direction: column; /* ADDED */
+  flex-grow: 1; /* ADDED */
+  width: 100%; /* ADDED to ensure #root takes full width if body is flex */
 }
 
 h1 {
